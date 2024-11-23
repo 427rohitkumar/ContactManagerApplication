@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+</head>
+<body>
+    <section >
+        <h3 class="text-center">This is profile page....</h3>
+        <div class="row mt-5">
+            <div class="col-6 m-auto">
+                <div class="card" >
+                    <div class="row text-center">
+                        <div class="col">
+                            <img th:src="@{/images/default.png}" class="card-img-top user-proifle-image" alt="...">
+                            <h5 class="card-title text-center">ID: CMS- <span th:text="${user.id}"></span></h5>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                      
+                      
+                    <form>
+                        <div class="mb-3">
+                            <label for="profileName" class="form-label">Name</label>
+                            <input th:value="${user.name}" type="text" class="form-control" id="exampleInputEmail1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="profileEmail" class="form-label">Email</label>
+                            <input th:value="${user.email}" type="email" class="form-control" id="exampleInputPassword1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profileName" class="form-label">Role</label>
+                            <input th:value="${user.role}" type="text" class="form-control" id="exampleInputEmail1">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profileName" class="form-label">Acount-Active</label>
+                            <div th:if= "${user.enabled}" >
+                                <input value="Active" type="text" class="form-control" id="exampleInputEmail1">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="profileName" class="form-label">About</label>
+                            <textarea name="" id="" th:field="${user.about}" class="form-control"></textarea>
+                        </div>
+                        <div class="row p-3">
+                            <button type="submit" class="btn btn-danger">Update</button>
+                        </div>
+                    </form>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

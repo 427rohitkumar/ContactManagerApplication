@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+</head>
+<body>
+    <section>
+        <h3 class="text-center">This is Contact detail Page......</h3>
+        <div class="card m-3">
+           
+             
+            <div class="card-body" th:if="${contact}">
+                <div class="container text-center">
+                     <img th:src="${'/images/'+contact.image}" style="width: 200px; height: 200px;object-fit: cover; border-radius: 50%;" alt="">
+                     <h3>
+                        <span th:text="${contact.name}"></span>
+                        <span th:text="${contact.secondName}"></span>
+                     </h3>
+
+                     <p th:text="${contact.description}"></p>
+                     <p th:text="${contact.email}"></p>
+                     <p th:text="${contact.phoneString}"></p>
+                      
+                </div>
+                <div class="text-center row m-auto d-flex justify-content-center">
+                    <div class="col-6">
+                        <form id="" th:action="@{'/user/delete/'+${contact.cId}}" method="POST" class="mt-2 row">
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                          </form>
+    
+                          <form th:action="@{'/user/update-contact/'+${contact.cId}}" method="POST" class="mt-2 row">
+                          <button class="btn btn-primary btn-sm">Edit</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-danger" th:unless="${contact}">Yout Dont Have permission to See this Contact detail....</h1>
+        </div>
+    </section>
+</body>
+</html>
